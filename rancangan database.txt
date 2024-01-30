@@ -1,0 +1,47 @@
+Kategori
+  - kategori
+  - Nama Kategori
+  - Slug (bwastore.id/kategori/gadget)
+
+Produk
+  - Nama Produk
+  - Relasi ke Pemilik Produk 
+  - Harga Produk
+  - Deskripsi
+  - Kategori Produk
+
+Galeri Produk
+  - Foto
+  - Relasi ke Produk
+  
+Cart
+- Relasi ke Produk
+- Relasi ke User
+
+User
+- Nama
+- Email
+- Password
+- Alamat 1
+- Alamat 2
+- Provinsi https://github.com/azishapidin/indoregion
+- Kota https://github.com/azishapidin/indoregion
+- Kode Pos
+- Negara
+- Nomor Handphone
+- Nama Toko
+- Kategori Toko
+- Status Toko
+
+Transaksi
+- Relasi ke User
+- Jumlah Asuransi
+- Ongkir
+- Total
+- Status Transaksi(Unpaid/Pending/Shipping/Success/Failed) 
+- Nomor Resi
+
+Transaksi detail
+- Relasi ke Transaksi
+- Relasi ke Produknya
+- Harga Barang
