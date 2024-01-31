@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\CategoryControllers;
 use App\Http\Controllers\Admin\UserController;
 
@@ -32,6 +33,9 @@ Route::post('/details/{id}',  [DetailController::class, 'add'])->name('detail-ad
 Route::get('/cart',  [CartController::class, 'index'])->name('cart');
 Route::delete('/cart/{id}',  [CartController::class, 'delete'])->name('cart-delete');
 Route::get('/success',  [CartController::class, 'success'])->name('success');
+
+Route::post('/checkout',  [CheckoutController::class, 'process'])->name('checkout');
+Route::get('/checkout/callback',  [CheckoutController::class, 'callback'])->name('midtrans-callback');
 
 Route::get('/register/success',  [RegisterController::class, 'success'])->name('register-success');
 
