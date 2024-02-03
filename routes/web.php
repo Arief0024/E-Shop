@@ -52,17 +52,33 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('dashboard-product');
     Route::get('/dashboard/product/create',  [DashboardProductController::class, 'create'])
         ->name('dashboard-product-create');
+
+    Route::POST('/dashboard/product',  [DashboardProductController::class, 'store'])
+        ->name('dashboard-product-store');
+
     Route::get('/dashboard/product/{id}',  [DashboardProductController::class, 'detail'])
         ->name('dashboard-product-detail');
     Route::get('/dashboard/transaction',  [DashboardTransactionController::class, 'index'])
         ->name('dashboard-transaction');
+
     Route::get('/dashboard/transaction/{id}',  [DashboardTransactionController::class, 'detail'])
         ->name('dashboard-transaction-detail');
+    Route::post('/dashboard/product/{id}',  [DashboardProductController::class, 'update'])
+        ->name('dashboard-product-update');
+
+    Route::post('/dashboard/product/gallery/upload',  [DashboardProductController::class, 'uploadGallery'])
+        ->name('dashboard-product-gallery-upload');
+
+    Route::get('/dashboard/product/gallery/delete/{id}',  [DashboardProductController::class, 'deleteGallery'])
+        ->name('dashboard-product-gallery-delete');
 
     Route::get('/dashboard/setting',  [DashboardSettingController::class, 'store'])
         ->name('dashboard-setting-store');
     Route::get('/dashboard/account',  [DashboardSettingController::class, 'account'])
         ->name('dashboard-setting-account');
+
+    Route::post('/dashboard/account/{redirect}',  [DashboardSettingController::class, 'update'])
+        ->name('dashboard-setting-redirect');
 });
 
 Route::prefix('admin')
