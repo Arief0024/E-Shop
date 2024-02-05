@@ -46,7 +46,7 @@ class CheckoutController extends Controller
                 'transaction_id' => $transaction->id,
                 'products_id' => $cart->product->id,
                 'price' => $cart->product->price,
-                'shipping_status' => 'PENDING',
+                'shipping_status' => 'PENDING' ,'SHIPPING', 'SUCCESS',
                 'resi' => '',
                 'code' => $trx
             ]);

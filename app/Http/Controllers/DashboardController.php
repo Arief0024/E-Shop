@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 use App\Models\TransactionDetails;
 use App\Models\User;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $transactions = TransactionDetails::with(['transaction.user', 'product.galleries']);
-
-
+        $transactions = TransactionDetails::with(['transaction.user','product.galleries'])
+                            ->whereHas('product', function($product){
+                                $product->where('users_id', Auth::user()->id);
+                            });
 
         $revenue = $transactions->get()->reduce(function ($carry, $item) {
             return $carry + $item->price;
