@@ -8,13 +8,13 @@
 />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="icon" href="{{ asset('images/shop.svg') }}">
+
 <title>@yield('title')</title>
 
 @stack('prepend-style')
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link href="/style/main.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/v/bs4/dt-1.13.8/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
 @stack('addon-style')
 </head>
 
@@ -24,128 +24,129 @@
     <!-- Sidebar -->
     <div class="border-right" id="sidebar-wrapper">
         <div class="sidebar-heading text-center">
-        <img src="/images/admin.png" alt="" class="my-4" style="max-width: 150px" />
+        <img src="/images/admin.png" alt="" class="my-4" style="max-width: 150px;" />
         </div>
         <div class="list-group list-group-flush">
         <a
-            href="{{ route('admin-dashboard')}}"
-            class="list-group-item list-group-item-action"
-            >Dashboard</a
-        >
+            href="{{ route('admin-dashboard') }}"
+            class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }} ">
+            Dashboard
+        </a>
         <a
-            href="{{ route('product.index')}}"
-            class="list-group-item list-group-item-action {{ (request()->is('admin/product')) ? 'active' : '' }}"
-            >Products</a
-        >
+            href="{{ route('product.index') }}"
+            class="list-group-item list-group-item-action {{ (request()->is('admin/product')) ? 'active' : '' }} ">
+            Products
+        </a>
         <a
-            href="{{ route('product-gallery.index')}}"
-            class="list-group-item list-group-item-action {{ (request()->is('admin/product-gallery*')) ? 'active' : '' }}"
-            >Galleries</a
-        >
+            href="{{ route('product-gallery.index') }}"
+            class="list-group-item list-group-item-action {{ (request()->is('admin/product-gallery*')) ? 'active' : '' }} ">
+            Galleries
+        </a>
+        <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }} ">
+            Categories
+        </a>
+
         <a
-            href="{{ route('category.index')}}"
-            class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}"
-            >Categories</a
+            href="{{ route('user.index') }}"
+            class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : '' }} "
         >
-        <a
-            href="/"
-            class="list-group-item list-group-item-action"
-            >Transaction</a
-        >
-        <a
-            href="{{ route('user.index')}}"
-            class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : '' }}"
-            >Users</a
-        >
-        <a
-            href="/"
-            class="list-group-item list-group-item-action"
-            >Sign Out</a
-        >
+            Users
+        </a>
+
         </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-<div id="page-content-wrapper">
-    <nav
-        class="navbar navbar-store navbar-expand-lg navbar-light fixed-top"
+    <div id="page-content-wrapper">
+        <nav
+        class="navbar navbar-expand-lg navbar-light navbar-store fixed-top"
         data-aos="fade-down"
         >
-        <button
+        <div class="container-fluid">
+            <button
             class="btn btn-secondary d-md-none mr-auto mr-2"
             id="menu-toggle"
-        >
+            >
             &laquo; Menu
-        </button>
-
-        <button
+            </button>
+            <button
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
+            >
             <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto d-none d-lg-flex">
-            <li class="nav-item dropdown">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Desktop Menu -->
+            <ul class="navbar-nav d-none d-lg-flex ml-auto">
+                <li class="nav-item dropdown">
                 <a
-                class="nav-link"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+                    href="#"
+                    class="nav-link"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
                 >
-                <img
+                    <img
                     src="/images/icon-user.png"
                     alt=""
                     class="rounded-circle mr-2 profile-picture"
-                />
-                Hi, Arief
+                    />
+                    Hi, {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="/">Logout</a>
-                </div>
-            </li>
+                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard User</a>
+                    <a href="{{ route('home') }}" class="dropdown-item">
+                        Back to home
+                    </a>
+                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                        </form>
+                    </div>
+                </li>
             </ul>
-            <!-- Mobile Menu -->
-            <ul class="navbar-nav d-block d-lg-none mt-3">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                Hi, Angga
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#">
-                Cart
-                </a>
-            </li>
-            </ul>
-        </div>
-    </nav>
 
-            {{-- content  --}}
-            @yield('content')
+            <ul class="navbar-nav d-block d-lg-none">
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                    Hi, {{ Auth::user()->name }}
+                </a>
+                </li>
+                <li class="nav-item">
+                <a href="#" class="nav-link d-inline-block">
+                    Cart
+                </a>
+                </li>
+            </ul>
+            </div>
         </div>
+        </nav>
+
+        {{-- Content --}}
+        @yield('content')
+
+    </div>
     </div>
 </div>
+
 <!-- Bootstrap core JavaScript -->
 @stack('prepend-script')
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs4/dt-1.13.8/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+<script>
+    $("#datatable").DataTable();
+</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
 </script>
-<!-- Menu Toggle Script -->
 <script>
     $("#menu-toggle").click(function (e) {
     e.preventDefault();

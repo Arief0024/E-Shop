@@ -110,11 +110,16 @@
                     Hi, {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu">
-                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="dropdown-item">
+                        Dashboard User
+                    </a>
                     <a href="{{ route('dashboard-setting-account') }}" class="dropdown-item">
                         Settings
                     </a>
                     <div class="dropdown-divider"></div>
+                    <a href="{{ route('home') }}" class="dropdown-item">
+                        Back to home
+                    </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout

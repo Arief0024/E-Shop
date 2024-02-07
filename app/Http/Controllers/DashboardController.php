@@ -17,7 +17,6 @@ class DashboardController extends Controller
                             ->whereHas('product', function($product){
                                 $product->where('users_id', Auth::user()->id);
                             });
-
         $revenue = $transactions->get()->reduce(function ($carry, $item) {
             return $carry + $item->price;
         });

@@ -1,9 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CategoryController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -11,8 +11,7 @@ use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Admin\CategoryControllers;
-use App\Http\Controllers\Admin\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/cart',  [CartController::class, 'index'])->name('cart');
     Route::delete('/cart/{id}',  [CartController::class, 'delete'])->name('cart-delete');
 
-    Route::PUT('/checkout',  [CheckoutController::class, 'process'])->name('checkout');
+    Route::post('/checkout',  [CheckoutController::class, 'process'])->name('checkout');
 
     Route::get('/dashboard',  [DashboardController::class, 'index'])->name('dashboard');
 
@@ -58,20 +57,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard/product/{id}',  [DashboardProductController::class, 'detail'])
         ->name('dashboard-product-detail');
+    Route::post('/dashboard/transaction/{id}',  [DashboardTransactionController::class, 'update'])
+    ->name('dashboard-transaction-update');
+
     Route::get('/dashboard/transaction',  [DashboardTransactionController::class, 'index'])
         ->name('dashboard-transaction');
-
     Route::get('/dashboard/transaction/{id}',  [DashboardTransactionController::class, 'detail'])
         ->name('dashboard-transaction-detail');
-    Route::post('/dashboard/transaction/{id}',  [DashboardTransactionController::class, 'update'])
-        ->name('dashboard-transaction-update');
-
     Route::post('/dashboard/product/{id}',  [DashboardProductController::class, 'update'])
         ->name('dashboard-product-update');
 
     Route::post('/dashboard/product/gallery/upload',  [DashboardProductController::class, 'uploadGallery'])
         ->name('dashboard-product-gallery-upload');
-
     Route::get('/dashboard/product/gallery/delete/{id}',  [DashboardProductController::class, 'deleteGallery'])
         ->name('dashboard-product-gallery-delete');
 
@@ -79,14 +76,12 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('dashboard-setting-store');
     Route::get('/dashboard/account',  [DashboardSettingController::class, 'account'])
         ->name('dashboard-setting-account');
-
     Route::post('/dashboard/account/{redirect}',  [DashboardSettingController::class, 'update'])
         ->name('dashboard-setting-redirect');
 });
 
 Route::prefix('admin')
-    ->namespace('')
-    ->middleware(['auth','admin'])
+    // ->middleware(['auth','admin'])
     ->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
         Route::resource('category', App\Http\Controllers\Admin\CategoryControllers::class);
@@ -96,5 +91,3 @@ Route::prefix('admin')
     });
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

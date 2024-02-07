@@ -18,7 +18,7 @@
                 <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                    <a href="/index.html">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="breadcrumb-item active">
                     Cart
@@ -62,7 +62,7 @@
                         </td>
                         <td style="width: 35%;">
                         <div class="product-title">${{ number_format($cart->product->price) }}</div>
-                        <div class="product-subtitle">USD</div>
+                        <div class="product-subtitle">Rp</div>
                         </td>
                         <td style="width: 20%;">
                         <form action="{{ route('cart-delete', $cart->products_id) }}" method="POST">

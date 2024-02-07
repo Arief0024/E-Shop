@@ -9,7 +9,7 @@ class UserRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users',
-            'roles' => 'nullable|string|in:ADMIN,USER'
+            'roles' => 'nullable|string|in:ADMIN,USER',
         ];
     }
 }

@@ -127,7 +127,7 @@
                                         />
                                         <div class="media-body">
                                             <h5 class="mt-2 mb-1">
-                                                Hazza Risky
+                                                Rizky Adi Sucipto
                                             </h5>
                                             I thought it was not good for living
                                             room. I really happy to decided buy
@@ -143,7 +143,7 @@
                                         />
                                         <div class="media-body">
                                             <h5 class="mt-2 mb-1">
-                                                Anna Sukkirata
+                                                Feri Indrawan
                                             </h5>
                                             Color is great with the minimalist
                                             concept. Even I thought it was made
@@ -159,7 +159,7 @@
                                         />
                                         <div class="media-body">
                                             <h5 class="mt-2 mb-1">
-                                                Dakimu Wangi
+                                                Andri Sujatmiko
                                             </h5>
                                             When I saw at first, it was really
                                             awesome to have with. Just let me

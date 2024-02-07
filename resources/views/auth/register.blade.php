@@ -14,8 +14,8 @@
                     <form method="POST" action="{{ route('register') }}">
                     @csrf
                         <div class="form-group">
-                            <label>Full Name</label>
-                                <input id="name" v-model="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <label>Nama</label>
+                                <input id="name" v-model="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Masukan Nama">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
                                     @enderror
                         </div>
                         <div class="form-group">
-                            <label>Email Address</label>
+                            <label>Alamat Email</label>
                                 <input id="email"
                                 v-model="email"
                                 @change="checkForEmailAvailability()"
@@ -34,7 +34,8 @@
                                 name="email"
                                 value="{{ old('email') }}"
                                 required
-                                autocomplete="email">
+                                autocomplete="email"
+                                placeholder="Masukan Alamat Email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Masukan Password Kamu">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -52,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Password</label>
-                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="Konfirmasi Password Kamu">
                                     @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -79,7 +80,7 @@
                                 </div>
                         <div class="form-group" v-if="is_store_open">
                             <label>Nama Toko</label>
-                                <input type="text" v-model="store_name" id="store_name" class="form-control @error('store_name') is-invalid @enderror" name="store_name" required autocomplete autofocus>
+                                <input type="text" v-model="store_name" id="store_name" class="form-control @error('store_name') is-invalid @enderror" name="store_name" required autocomplete autofocus placeholder="Masukan Nama Toko Kamu">
                                     @error('store_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -162,8 +163,8 @@
     },
     data() {
         return{
-        name: "Angga Hazza Sett",
-        email: "kamujagoan@bwa.id",
+        name: "",
+        email: "",
         is_store_open: true,
         store_name: "",
         email_unavailabel: false
