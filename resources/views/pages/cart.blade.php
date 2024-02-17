@@ -101,7 +101,7 @@
                     class="form-control"
                     id="address_one"
                     name="address_one"
-                    value="Setra Duta Cemara"
+                    placeholder="Masukan Alamat 1"
                     />
                 </div>
                 </div>
@@ -113,7 +113,7 @@
                     class="form-control"
                     id="address_two"
                     name="address_two"
-                    value="Blok B2 No. 34"
+                    placeholder="Masukan Alamat 2"
                     />
                 </div>
                 </div>
@@ -143,7 +143,7 @@
                     class="form-control"
                     id="zip_code"
                     name="zip_code"
-                    value="40512"
+                    placeholder="Masukan Kode Pos"
                     />
                 </div>
                 </div>
@@ -155,7 +155,7 @@
                     class="form-control"
                     id="country"
                     name="country"
-                    value="Indonesia"
+                    placeholder="Masukan Negara"
                     />
                 </div>
                 </div>
@@ -167,7 +167,7 @@
                     class="form-control"
                     id="phone_number"
                     name="phone_number"
-                    value="+628 2020 11111"
+                    placeholder="Masukan Nomor Telepon"
                     />
                 </div>
                 </div>
@@ -181,21 +181,21 @@
                 </div>
             </div>
             <div class="row" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-4 col-md-2">
-                <div class="product-title">$0</div>
-                <div class="product-subtitle">Country Tax</div>
+                {{-- <div class="col-4 col-md-2">
+                    <div class="product-title">$0</div>
+                    <div class="product-subtitle">Country Tax</div>
                 </div>
                 <div class="col-4 col-md-3">
-                <div class="product-title">$0</div>
-                <div class="product-subtitle">Product Insurance</div>
+                    <div class="product-title">$0</div>
+                    <div class="product-subtitle">Product Insurance</div>
                 </div>
                 <div class="col-4 col-md-2">
-                <div class="product-title">$0</div>
-                <div class="product-subtitle">Ship to Jakarta</div>
-                </div>
+                    <div class="product-title">$0</div>
+                    <div class="product-subtitle">Ship to Jakarta</div>
+                </div> --}}
                 <div class="col-4 col-md-2">
-                <div class="product-title text-success">${{ number_format($totalPrice ?? 0) }}</div>
-                <div class="product-subtitle">Total</div>
+                    <div class="product-title text-success">${{ number_format($totalPrice ?? 0) }}</div>
+                    <div class="product-subtitle">Total</div>
                 </div>
                 <div class="col-8 col-md-3">
                 <button
