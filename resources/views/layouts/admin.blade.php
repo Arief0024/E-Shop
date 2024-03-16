@@ -53,6 +53,10 @@
             Users
         </a>
 
+        <a href="{{ route('home') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : '' }} ">
+            Back Home
+        </a>
+
         </div>
     </div>
 

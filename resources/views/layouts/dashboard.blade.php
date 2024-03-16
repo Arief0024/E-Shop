@@ -60,8 +60,7 @@
             href="{{ route('logout') }}"
             onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"
-            class="list-group-item list-group-item-action"
-        >
+            class="list-group-item list-group-item-action">
             Sign Out
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -83,50 +82,25 @@
             >
             &laquo; Menu
             </button>
-            <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            >
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Desktop Menu -->
             <ul class="navbar-nav d-none d-lg-flex ml-auto">
                 <li class="nav-item dropdown">
-                <a
-                    href="#"
-                    class="nav-link"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                >
-                    <img
-                        src="/images/icon-user.png"
-                        alt=""
-                        class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hi, {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu">
-                    <a href="{{ route('dashboard') }}" class="dropdown-item">
-                        Dashboard User
+                    <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        <img
+                            src="/images/icon-user.png"
+                            alt=""
+                            class="rounded-circle mr-2 profile-picture"
+                        />
+                        Hi, {{ Auth::user()->name }}
                     </a>
-                    <a href="{{ route('dashboard-setting-account') }}" class="dropdown-item">
-                        Settings
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('home') }}" class="dropdown-item">
-                        Back to home
-                    </a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    <div class="dropdown-menu">
+                            <a href="{{ route('home') }}" class="dropdown-item">
+                                Back Home
+                            </a>
                     </div>
                 </li>
                 <li class="nav-item">
